@@ -1,158 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RONOSTUDIO</title>
-  <style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RONOSTUDIO</title>
+    <style>
     * {
-      box-sizing: border-box;
+        box-sizing: border-box;
     }
+
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #fdfdfd;
-      color: #222;
+        margin: 0;
+        font-family: sans-serif;
+        background-color: #fdfdfd;
+        color: #222;
     }
+
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-      padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        padding: 20px;
     }
+
     .gallery a {
-      display: block;
-      overflow: hidden;
-      border-radius: 4px;
+        display: block;
+        overflow: hidden;
+        border-radius: 4px;
     }
+
     .gallery img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.3s ease;
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
     }
+
     .gallery img:hover {
-      transform: scale(1.05);
+        transform: scale(1.05);
     }
 
     /* Lightbox overlay */
     .lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        display: none;
     }
+
     .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
+        max-width: 90vw;
+        max-height: 90vh;
     }
+
     .lightbox:target {
-      display: flex;
+        display: flex;
     }
+
     .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: white;
-      text-decoration: none;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 2rem;
+        color: white;
+        text-decoration: none;
     }
 
-  .twitch-links {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #f3f3f3;
-    border-top: 1px solid #ccc;
-  }
-  .twitch-links h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-  .twitch-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .twitch-buttons a {
-    display: flex;
-    align-items: center;
-    background-color: #9146FF;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  .twitch-buttons a:hover {
-    background-color: #772ce8;
-  }
-  .twitch-buttons img {
-    height: 24px;
-    width: 24px;
-    margin-right: 10px;
-    filter: invert(1); /* make the SVG white */
-  }
-  </style>
+    .twitch-links {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f3f3f3;
+        border-top: 1px solid #ccc;
+    }
+
+    .twitch-links h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .twitch-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .twitch-buttons a {
+        display: flex;
+        align-items: center;
+        background-color: #9146FF;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
+
+    .twitch-buttons a:hover {
+        background-color: #772ce8;
+    }
+
+    .twitch-buttons img {
+        height: 24px;
+        width: 24px;
+        margin-right: 10px;
+    }
+
+    .twitch-banner {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #6441a5;
+        /* Twitch purple */
+        color: white;
+        text-align: center;
+        padding: 12px 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        z-index: 1001;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+        padding-top: 60px;
+        /* creates room for the banner so it doesn’t cover your content */
+    }
+    </style>
 </head>
+
 <body>
-
-<section class="twitch-links">
-  <h2>Watch on Twitch</h2>
-  <div class="twitch-buttons">
-    <a href="https://twitch.tv/chaszraa" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Twitch_mit_Glitch.png" alt="Twitch Logo" />
-      Chaszraa
-    </a>
-    <a href="https://twitch.tv/navvara" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Twitch_mit_Glitch.png" alt="Twitch Logo" />
-      Navvara
-    </a>
-  </div>
-</section>
-
-<div class="gallery">
-  <a href="#img1"><img src="cropped-febluv112.png" alt="Art 1" /></a>
-  <a href="#img2"><img src="cropped-rono2-shirt-front.png" alt="Art 2" /></a>
-  <a href="#img3"><img src="dice-colored.jpg" alt="Art 3" /></a>
-  <a href="#img4"><img src="dracolitch.jpg" alt="Art 4" /></a>
-  <a href="#img5"><img src="fairy.jpg" alt="Art 5" /></a>
-  <a href="#img6"><img src="158461_R_O_Bry_MP4_PROOF_031615-1.png" alt="Art 6" /></a>
-  <a href="#img7"><img src="AB.png" alt="Art 7" /></a>
-  <a href="#img8"><img src="blu-g.jpg" alt="Art 8" /></a>
-  <a href="#img9"><img src="catb2.jpg" alt="Art 9" /></a>
-  <a href="#img10"><img src="cir1.jpg" alt="Art 10" /></a>
-  <a href="#img11"><img src="IMG_20140928_163831693_HDR.jpg" alt="Art 11" /></a>
-  <a href="#img12"><img src="finn-jake-marcie-color.jpg" alt="Art 12" /></a>
-  <a href="#img13"><img src="horns-for-real.jpg" alt="Art 13" /></a>
-  <a href="#img14"><img src="koopa-2final.jpg" alt="Art 14" /></a>
-  <a href="#img15"><img src="mega-finish.jpg" alt="Art 15" /></a>
-  <a href="#img16"><img src="mermay1.jpg" alt="Art 16" /></a>
-</div>
-
-<!-- Lightboxes -->
-<div id="img1" class="lightbox"><a href="#" class="close">&times;</a><img src="cropped-febluv112.png" alt="Art 1" /></div>
-<div id="img2" class="lightbox"><a href="#" class="close">&times;</a><img src="cropped-rono2-shirt-front.png" alt="Art 2" /></div>
-<div id="img3" class="lightbox"><a href="#" class="close">&times;</a><img src="dice-colored.jpg" alt="Art 3" /></div>
-<div id="img4" class="lightbox"><a href="#" class="close">&times;</a><img src="dracolitch.jpg" alt="Art 4" /></div>
-<div id="img5" class="lightbox"><a href="#" class="close">&times;</a><img src="fairy.jpg" alt="Art 5" /></div>
-<div id="img6" class="lightbox"><a href="#" class="close">&times;</a><img src="158461_R_O_Bry_MP4_PROOF_031615-1.png" alt="Art 6" /></div>
-<div id="img7" class="lightbox"><a href="#" class="close">&times;</a><img src="AB.png" alt="Art 7" /></div>
-<div id="img8" class="lightbox"><a href="#" class="close">&times;</a><img src="blu-g.jpg" alt="Art 8" /></div>
-<div id="img9" class="lightbox"><a href="#" class="close">&times;</a><img src="catb2.jpg" alt="Art 9" /></div>
-<div id="img10" class="lightbox"><a href="#" class="close">&times;</a><img src="cir1.jpg" alt="Art 10" /></div>
-<div id="img11" class="lightbox"><a href="#" class="close">&times;</a><img src="IMG_20140928_163831693_HDR.jpg" alt="Art 11" /></div>  
-<div id="img12" class="lightbox"><a href="#" class="close">&times;</a><img src="finn-jake-marcie-color.jpg" alt="Art 12" /></div>  
-<div id="img13" class="lightbox"><a href="#" class="close">&times;</a><img src="horns-for-real.jpg" alt="Art 13" /></div>  
-<div id="img14" class="lightbox"><a href="#" class="close">&times;</a><img src="koopa-2final.jpg" alt="Art 14" /></div>  
-<div id="img15" class="lightbox"><a href="#" class="close">&times;</a><img src="mega-finish.jpg" alt="Art 15" /></div>  
-<div id="img16" class="lightbox"><a href="#" class="close">&times;</a><img src="mermay1.jpg" alt="Art 16" /></div>  
-
+    <header class="twitch-banner">
+        <section class="twitch-links">
+            <h2>Watch on Twitch</h2>
+            <div class="twitch-buttons">
+                <a href="https://twitch.tv/chaszraa" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Twitch_mit_Glitch.png" alt="Twitch Logo" />
+                    Chaszraa
+                </a>
+                <a href="https://twitch.tv/navvara" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Twitch_mit_Glitch.png" alt="Twitch Logo" />
+                    Navvara
+                </a>
+            </div>
+        </section>
+    </header>
+    <div class="gallery">
+        <a href="#img1"><img src="cropped-febluv112.png" alt="Art 1" /></a>
+        <a href="#img2"><img src="cropped-rono2-shirt-front.png" alt="Art 2" /></a>
+        <a href="#img3"><img src="dice-colored.jpg" alt="Art 3" /></a>
+        <a href="#img4"><img src="dracolitch.jpg" alt="Art 4" /></a>
+        <a href="#img5"><img src="fairy.jpg" alt="Art 5" /></a>
+        <a href="#img6"><img src="158461_R_O_Bry_MP4_PROOF_031615-1.png" alt="Art 6" /></a>
+        <a href="#img7"><img src="AB.png" alt="Art 7" /></a>
+        <a href="#img8"><img src="blu-g.jpg" alt="Art 8" /></a>
+        <a href="#img9"><img src="catb2.jpg" alt="Art 9" /></a>
+        <a href="#img10"><img src="cir1.jpg" alt="Art 10" /></a>
+        <a href="#img11"><img src="IMG_20140928_163831693_HDR.jpg" alt="Art 11" /></a>
+        <a href="#img12"><img src="finn-jake-marcie-color.jpg" alt="Art 12" /></a>
+        <a href="#img13"><img src="horns-for-real.jpg" alt="Art 13" /></a>
+        <a href="#img14"><img src="koopa-2final.jpg" alt="Art 14" /></a>
+        <a href="#img15"><img src="mega-finish.jpg" alt="Art 15" /></a>
+        <a href="#img16"><img src="mermay1.jpg" alt="Art 16" /></a>
+    </div>
+    <!-- Lightboxes -->
+    <div id="img1" class="lightbox"><a href="#" class="close">&times;</a><img src="cropped-febluv112.png" alt="Art 1" /></div>
+    <div id="img2" class="lightbox"><a href="#" class="close">&times;</a><img src="cropped-rono2-shirt-front.png" alt="Art 2" /></div>
+    <div id="img3" class="lightbox"><a href="#" class="close">&times;</a><img src="dice-colored.jpg" alt="Art 3" /></div>
+    <div id="img4" class="lightbox"><a href="#" class="close">&times;</a><img src="dracolitch.jpg" alt="Art 4" /></div>
+    <div id="img5" class="lightbox"><a href="#" class="close">&times;</a><img src="fairy.jpg" alt="Art 5" /></div>
+    <div id="img6" class="lightbox"><a href="#" class="close">&times;</a><img src="158461_R_O_Bry_MP4_PROOF_031615-1.png" alt="Art 6" /></div>
+    <div id="img7" class="lightbox"><a href="#" class="close">&times;</a><img src="AB.png" alt="Art 7" /></div>
+    <div id="img8" class="lightbox"><a href="#" class="close">&times;</a><img src="blu-g.jpg" alt="Art 8" /></div>
+    <div id="img9" class="lightbox"><a href="#" class="close">&times;</a><img src="catb2.jpg" alt="Art 9" /></div>
+    <div id="img10" class="lightbox"><a href="#" class="close">&times;</a><img src="cir1.jpg" alt="Art 10" /></div>
+    <div id="img11" class="lightbox"><a href="#" class="close">&times;</a><img src="IMG_20140928_163831693_HDR.jpg" alt="Art 11" /></div>
+    <div id="img12" class="lightbox"><a href="#" class="close">&times;</a><img src="finn-jake-marcie-color.jpg" alt="Art 12" /></div>
+    <div id="img13" class="lightbox"><a href="#" class="close">&times;</a><img src="horns-for-real.jpg" alt="Art 13" /></div>
+    <div id="img14" class="lightbox"><a href="#" class="close">&times;</a><img src="koopa-2final.jpg" alt="Art 14" /></div>
+    <div id="img15" class="lightbox"><a href="#" class="close">&times;</a><img src="mega-finish.jpg" alt="Art 15" /></div>
+    <div id="img16" class="lightbox"><a href="#" class="close">&times;</a><img src="mermay1.jpg" alt="Art 16" /></div>
 </body>
+
 </html>
