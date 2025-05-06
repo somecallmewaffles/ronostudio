@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RONOSTUDIO</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fdfdfd;
+      color: #222;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      padding: 20px;
+    }
+    .gallery a {
+      display: block;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox overlay */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      display: none;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    .lightbox:target {
+      display: flex;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="gallery">
+  <a href="#img1"><img src="cropped-febluv112.png" alt="Art 1" /></a>
+  <a href="#img2"><img src="cropped-rono2-shirt-front.png" alt="Art 2" /></a>
+  <a href="#img3"><img src="dice-colored.jpg" alt="Art 3" /></a>
+  <a href="#img4"><img src="dracolitch.jpg" alt="Art 4" /></a>
+  <a href="#img5"><img src="fairy.jpg" alt="Art 5" /></a>
+  <a href="#img6"><img src="158461_R_O_Bry_MP4_PROOF_031615-1.png" alt="Art 6" /></a>
+  <a href="#img7"><img src="AB.png" alt="Art 7" /></a>
+  <a href="#img8"><img src="blu-g.jpg" alt="Art 8" /></a>
+  <a href="#img9"><img src="catb2.jpg" alt="Art 9" /></a>
+  <a href="#img10"><img src="cir1.jpg" alt="Art 10" /></a>
+</div>
+
+<!-- Lightboxes -->
+<div id="img1" class="lightbox"><a href="#" class="close">&times;</a><img src="cropped-febluv112.png" alt="Art 1" /></div>
+<div id="img2" class="lightbox"><a href="#" class="close">&times;</a><img src="cropped-rono2-shirt-front.png" alt="Art 2" /></div>
+<div id="img3" class="lightbox"><a href="#" class="close">&times;</a><img src="dice-colored.jpg" alt="Art 3" /></div>
+<div id="img4" class="lightbox"><a href="#" class="close">&times;</a><img src="dracolitch.jpg" alt="Art 4" /></div>
+<div id="img5" class="lightbox"><a href="#" class="close">&times;</a><img src="fairy.jpg" alt="Art 5" /></div>
+<div id="img6" class="lightbox"><a href="#" class="close">&times;</a><img src="158461_R_O_Bry_MP4_PROOF_031615-1.png" alt="Art 6" /></div>
+<div id="img7" class="lightbox"><a href="#" class="close">&times;</a><img src="AB.png" alt="Art 7" /></div>
+<div id="img8" class="lightbox"><a href="#" class="close">&times;</a><img src="blu-g.jpg" alt="Art 8" /></div>
+<div id="img9" class="lightbox"><a href="#" class="close">&times;</a><img src="catb2.jpg" alt="Art 9" /></div>
+<div id="img10" class="lightbox"><a href="#" class="close">&times;</a><img src="cir1.jpg" alt="Art 10" /></div>
+
+</body>
+</html>
