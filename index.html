@@ -62,9 +62,60 @@
       color: white;
       text-decoration: none;
     }
+
+  .twitch-links {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f3f3f3;
+    border-top: 1px solid #ccc;
+  }
+  .twitch-links h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  .twitch-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .twitch-buttons a {
+    display: flex;
+    align-items: center;
+    background-color: #9146FF;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  .twitch-buttons a:hover {
+    background-color: #772ce8;
+  }
+  .twitch-buttons img {
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+    filter: invert(1); /* make the SVG white */
+  }
   </style>
 </head>
 <body>
+
+<section class="twitch-links">
+  <h2>Watch on Twitch</h2>
+  <div class="twitch-buttons">
+    <a href="https://twitch.tv/chaszraa" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Twitch_glitch_logo.svg" alt="Twitch Logo" />
+      Chaszraa
+    </a>
+    <a href="https://twitch.tv/navvara" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Twitch_glitch_logo.svg" alt="Twitch Logo" />
+      Navvara
+    </a>
+  </div>
+</section>
 
 <div class="gallery">
   <a href="#img1"><img src="cropped-febluv112.png" alt="Art 1" /></a>
