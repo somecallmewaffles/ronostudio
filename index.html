@@ -129,11 +129,6 @@
         z-index: 1001;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
-
-    body {
-        padding-top: 60px;
-        /* creates room for the banner so it doesn’t cover your content */
-    }
     </style>
 </head>
 
@@ -188,6 +183,13 @@
     <div id="img14" class="lightbox"><a href="#" class="close">&times;</a><img src="koopa-2final.jpg" alt="Art 14" /></div>
     <div id="img15" class="lightbox"><a href="#" class="close">&times;</a><img src="mega-finish.jpg" alt="Art 15" /></div>
     <div id="img16" class="lightbox"><a href="#" class="close">&times;</a><img src="mermay1.jpg" alt="Art 16" /></div>
+
+    <script>
+    window.addEventListener('load', () => {
+        const banner = document.querySelector('.twitch-banner');
+        document.body.style.paddingTop = banner.offsetHeight + 'px';
+    });
+    </script>
 </body>
 
 </html>
