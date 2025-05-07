@@ -165,10 +165,10 @@
     </header>
 
     <script>
-        window.addEventListener('load', () => {
-            const banner = document.querySelector('.twitch-banner');
-            document.body.style.paddingTop = banner.offsetHeight + 'px';
-        });
+      document.addEventListener('DOMContentLoaded', () => {
+        const banner = document.querySelector('.twitch-banner');
+        document.body.style.paddingTop = banner.offsetHeight + 'px';
+      });
     </script>
     
     <section class="intro">
